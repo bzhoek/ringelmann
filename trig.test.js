@@ -16,6 +16,10 @@ test('0 degrees', () => {
   expect(coordinates(0, 10)).toEqual({x: 10, y: 0})
 });
 
+test('90 degrees', () => {
+  expect(coordinates(90, 10)).toEqual({x: 0, y: 10})
+});
+
 test('180 degrees', () => {
   expect(coordinates(180, 10)).toEqual({x: -10, y: 0})
 });
