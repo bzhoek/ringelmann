@@ -1,0 +1,21 @@
+{
+  "name": "ringelmann",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "babel-jest": "^26.1.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^26.1.0"
+  },
+  "dependencies": {
+    "wilderness": "^5.1.2"
+  }
+}
