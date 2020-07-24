@@ -1,0 +1,26 @@
+<html>
+<head>
+  <script src="https://unpkg.com/wilderness/dist/wilderness.production.js"></script>
+  <script type="module" src="http://localhost:63342/ringelmann/ringelmann.js"></script>
+</head>
+<body>
+  <svg style="border: 1px solid red"
+      height="200"
+      preserveAspectRatio="xMidYMid meet"
+      width="200"
+      viewBox="-50 -50 100 100">
+
+    <defs>
+      <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+        <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+        <rect width="80" height="80" fill="url(#smallGrid)"/>
+        <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1"/>
+      </pattern>
+    </defs>
+
+    <rect x="-50" y="-50" width="100%" height="100%" fill="url(#grid)"/>
+  </svg>
+</body>
+</html>
