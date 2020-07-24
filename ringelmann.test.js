@@ -1,4 +1,4 @@
-import {angles, segments, makeShape, lines} from './ringelmann'
+import {angles, segments, makeShape, pointsString} from './ringelmann'
 
 describe('angles', () => {
   test('triangle', () => {
@@ -33,7 +33,7 @@ describe('shapes', () => {
 })
 
 describe('svg', () => {
-  test('line', () => {
-    expect(lines(2)).toEqual([[0, 50, 0, -50]])
+  test('polyline', () => {
+    expect(pointsString(2)).toEqual("0, 50 0, -50")
   });
 })
