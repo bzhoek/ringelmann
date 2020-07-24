@@ -30,7 +30,21 @@ export const segments = (points) => {
 export const makeShape = (points) => {
   return segments(points)
     .map(segment => segment.map(angle => coordinates(angle, 50))
-    .flatMap(point => [point.x, point.y]))
+      .flatMap(point => [point.x, point.y]))
+}
+
+export const lines = (points) => {
+  return makeShape(points).map(line => {
+    return {
+      type: 'line',
+      x1: line[0],
+      y1: line[1],
+      x2: line[2],
+      y2: line[3],
+      stroke: '#1F9FFD',
+      strokeWidth: 4
+    }
+  })
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -45,7 +59,8 @@ window.addEventListener('DOMContentLoaded', () => {
     cx: -50,
     cy: 0,
     r: 10,
-    fill: '#DBF8A1'
+    stroke: '#DBF8A1',
+    fill: "transparent",
   }
 
   const keyframe2 = {
@@ -54,23 +69,41 @@ window.addEventListener('DOMContentLoaded', () => {
     y: 10,
     width: 20,
     height: 20,
-    fill: '#1F9FFD',
+    stroke: '#1F9FFD',
+    fill: "transparent",
     duration: 2000
   }
 
   const keyframe3 = {
-    type: 'line',
-    x1: 0,
-    y1: -50,
-    x2: 0,
-    y2: 0,
-    fill: '#DBF8A1',
+    type: 'g',
+    shapes: lines(4),
+    stroke: "black",
+    fill: "transparent",
     duration: 2000
   }
 
-  const morph = shape(keyframe1, keyframe2, keyframe3)
+  const polyline = {
+    "type": "polyline",
+    "points": "0,-50 50,0 50,0 0,50 0,50 -50,0 -50,0 0,-50",
+    stroke: "#000000",
+    fill: "transparent",
+    duration: 2000
+  }
+
+  const path = {
+    type: 'path',
+    d: 'M5,50L80,60v40,l-15,10l-15,-10z',
+    stroke: "black",
+    fill: "none"
+  }
+
+  console.dir(JSON.stringify(keyframe3))
+
+  const morph = shape(keyframe1, keyframe2, polyline, path)
   const animation = timeline(morph)
 
+  // const animation = shape(keyframe3)
+  // shape(polyline)
   render(document.querySelector('svg'), animation)
 
   play(animation)

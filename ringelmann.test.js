@@ -1,4 +1,4 @@
-import {angles, segments, makeShape} from './ringelmann'
+import {angles, segments, makeShape, lines} from './ringelmann'
 
 describe('angles', () => {
   test('triangle', () => {
@@ -29,5 +29,11 @@ describe('shapes', () => {
   });
   test('triangle', () => {
     expect(makeShape(3)).toEqual([[0, -50, 43.3, 24.99], [43.3, 24.99, -43.3, 24.99], [-43.3, 24.99, 0, -50]])
+  });
+})
+
+describe('svg', () => {
+  test('line', () => {
+    expect(lines(2)).toEqual([[0, 50, 0, -50]])
   });
 })
