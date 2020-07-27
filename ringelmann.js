@@ -20,10 +20,11 @@ export const angles = (points) => {
 export const segments = (points) => {
   let lines = []
   let a = angles(points)
-  for (let i = 0; i < a.length - 1 && points > 2; i++) {
-    lines.push([a[i], a[i + 1]])
+  for (let x = 0; x < a.length; x++) {
+    for (let y = x + 1; y < a.length; y++) {
+      lines.push([a[x], a[y]])
+    }
   }
-  lines.push([a.pop(), a[0]])
   return lines
 }
 
@@ -63,12 +64,16 @@ window.addEventListener('DOMContentLoaded', () => {
     fill: "none"
   }
 
-  console.dir(JSON.stringify(polyline(4)))
+  let shapes = Array.from(Array(7).keys()).map(i => polyline(i + 3));
+  console.log(shapes)
+  const morph = shape(polyline(3), polyline(4), polyline(5), polyline(6), polyline(7), polyline(8), polyline(9), polyline(10))
 
-  const morph = shape(polyline(3), polyline(4), polyline(5), polyline(6))
   const animation = timeline(morph)
 
-  render(document.querySelector('svg'), animation)
+  // render(document.querySelector('svg'), animation)
 
-  play(animation)
+  play(animation, {
+    alternate: true,
+    iterations: Infinity
+  })
 })
